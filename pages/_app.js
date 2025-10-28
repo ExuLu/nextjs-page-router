@@ -1,4 +1,3 @@
-import Navigation from '@/components/Navigation';
 import Header from '@/components/Header';
 
 import '@/styles/globals.css';
