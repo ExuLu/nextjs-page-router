@@ -1,3 +1,4 @@
+import CabinList from '@/components/CabinList';
 import { getCabins } from '@/lib/data-service';
 import Head from 'next/head';
 
@@ -27,6 +28,8 @@ export default function Cabins({ cabins }) {
           own little home away from home. The perfect spot for a peaceful, calm
           vacation. Welcome to paradise.
         </p>
+
+        <CabinList cabins={cabins} />
       </div>
     </>
   );
