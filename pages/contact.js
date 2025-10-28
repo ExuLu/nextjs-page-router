@@ -12,10 +12,12 @@ export default function Contact() {
     const formData = new FormData(e.target);
     const contactData = Object.fromEntries(formData.entries());
 
+    isSubmitting(true);
     fetch('/api/contact', {
       method: 'POST',
       body: JSON.stringify(contactData),
     });
+    isSubmitting(false);
   }
 
   return (
@@ -77,8 +79,11 @@ export default function Contact() {
           </div>
 
           <div className='flex justify-between items-center text-red-500'>
-            <button className='bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300'>
-              Send message
+            <button
+              className='bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300'
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send message'}
             </button>
           </div>
         </form>
