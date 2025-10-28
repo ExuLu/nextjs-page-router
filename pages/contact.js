@@ -6,6 +6,15 @@ export default function Contact() {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState('');
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const contactData = Object.fromEntries(formData.entries());
+
+    console.log(contactData);
+  }
+
   return (
     <>
       <Head>
@@ -17,7 +26,10 @@ export default function Contact() {
           Any question? Shoot us a message
         </h1>
 
-        <form className='bg-primary-900 py-10 px-14 text-lg space-y-6 max-w-5xl mx-auto'>
+        <form
+          className='bg-primary-900 py-10 px-14 text-lg space-y-6 max-w-5xl mx-auto'
+          onSubmit={handleSubmit}
+        >
           <div className='space-y-2'>
             <label>Full name</label>
             <input
