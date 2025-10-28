@@ -1,6 +1,14 @@
+import { getCabins } from '@/lib/data-service';
 import Head from 'next/head';
 
-export default function Cabins() {
+export async function getStaticProps() {
+  const cabins = await getCabins();
+
+  return { props: { cabins } };
+}
+
+export default function Cabins({ cabins }) {
+  console.log(cabins);
   return (
     <>
       <Head>
