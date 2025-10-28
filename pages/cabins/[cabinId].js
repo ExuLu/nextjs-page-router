@@ -1,7 +1,15 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const Cabin = () => {
+import { getCabin } from '@/lib/data-service';
+
+export async function getServerSideProps({ params }) {
+  const cabin = await getCabin(params.cabinId);
+
+  return { props: { cabin } };
+}
+
+const Cabin = ({ cabin }) => {
   const router = useRouter();
 
   return (
