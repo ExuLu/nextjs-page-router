@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }) {
       <Header />
 
       <div className='flex-1 px-8 py-12 grid'>
-        <main className='max-w-7xl mx-auto w-full'></main>
+        <main className='max-w-7xl mx-auto w-full'>
+          <Component {...pageProps} />
+        </main>
       </div>
     </div>
   );
-
-  // return <Component {...pageProps} />;
 }
