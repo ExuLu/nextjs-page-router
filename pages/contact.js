@@ -12,7 +12,10 @@ export default function Contact() {
     const formData = new FormData(e.target);
     const contactData = Object.fromEntries(formData.entries());
 
-    console.log(contactData);
+    fetch('/api/contact', {
+      method: 'POST',
+      body: JSON.stringify(contactData),
+    });
   }
 
   return (
@@ -69,6 +72,7 @@ export default function Contact() {
               name='message'
               className='px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm'
               rows={3}
+              required
             />
           </div>
 

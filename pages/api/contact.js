@@ -8,12 +8,14 @@ export default async function handler(req, res) {
     });
   }
 
-  const contactData = {
-    fullName: 'Alena',
-    email: 'test',
-    subject: 'booking',
-    message: 'text',
-  };
+  const contactData = JSON.parse(req.body);
+
+  if (!contactData) {
+    return res.status(404).json({
+      success: false,
+      message: 'Please provide relevant data.',
+    });
+  }
 
   const { error } = await supabase.from('contact').insert(contactData);
 
